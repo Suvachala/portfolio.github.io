@@ -23,9 +23,7 @@
     </section>
 
     <section id="portfolio">
-      <h2>Portfolio</h2>
       <div class="portfolio-grid">
-        <!-- Project thumbnails that open modals -->
         <div class="project-card" onclick="openModal('Project 1')">Project 1</div>
         <div class="project-card" onclick="openModal('Project 2')">Project 2</div>
         <div class="project-card" onclick="openModal('Project 3')">Project 3</div>
@@ -37,7 +35,8 @@
         <div class="modal-content">
           <span class="close-btn" onclick="closeModal()">&times;</span>
           <h3 id="modal-title">Project Title</h3>
-          <p>This is a detailed project description for the selected portfolio item. Here you can talk about the tools used, the process, and the results.</p>
+          <img id="modal-image" src="" alt="Project Image" />
+          <p id="modal-description">Project description will appear here.</p>
         </div>
       </div>
     </section>
