@@ -121,9 +121,7 @@ button:hover {
 }
 
 
-/* === Existing styles remain unchanged above === */
 
-/* === Responsive Enhancements === */
 
 /* Mobile: up to 768px */
 @media (max-width: 768px) {
@@ -281,7 +279,7 @@ p {
   line-height: 1.7;
 }
 
-/* Additional improvements */
+
 .portfolio-grid {
   margin-top: 1rem;
 }
