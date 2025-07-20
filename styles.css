@@ -12,8 +12,25 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
+
+  /* Background image */
+  background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
   margin: 0;
   padding: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* overlay */
+  z-index: -1;
 }
 
 h1, h2 {
@@ -54,14 +71,37 @@ nav a {
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
+  position: relative;
 }
+
+#about {
+  background: rgba(255, 255, 255, 0.85);
+  color: #222;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Start hidden */
+  animation: fadeSlideUp 1s ease forwards; /* Animate in */
+  animation-delay: 0.3s; /* Optional delay for smoothness */
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 nav a:hover {
   color: var(--accent-color);
-}
-
-nav a[title] {
-  position: relative;
 }
 
 nav a[title]:hover::after {
@@ -98,13 +138,19 @@ section {
   background: #fff;
   border: 1px solid #ddd;
   padding: 1rem;
+  cursor: pointer;
   animation: fadeIn 0.8s ease-in;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary-color);
 }
 
 .project-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* === Contact Form === */
@@ -121,6 +167,7 @@ input, textarea, button {
   padding: 0.75rem;
   border-radius: 5px;
   border: 1px solid #ccc;
+  resize: vertical;
 }
 
 button {
@@ -156,7 +203,22 @@ button:hover {
   width: 90%;
   border-radius: 10px;
   position: relative;
-  animation: fadeIn 0.3s ease;
+
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInZoom 0.4s ease forwards;
+}
+
+.modal:not(.hidden) .modal-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#modal-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .close-btn {
@@ -167,6 +229,7 @@ button:hover {
   cursor: pointer;
 }
 
+/* Hide modal by default */
 .hidden {
   display: none;
 }
@@ -175,6 +238,13 @@ button:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInZoom {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* === Responsive === */
